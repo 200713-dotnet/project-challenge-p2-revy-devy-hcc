@@ -1,0 +1,25 @@
+﻿@model StockJocky.Client.Models.UserViewModel
+
+<h2>Login</h2>
+<form method="post" asp-controller="Home" asp-action="AuthenticateUser" >
+
+
+
+<label for="un" >Username</label>
+<input type="text" id="un" asp-for="UserName" ><br><br>
+<label for="pw" >Password</label>
+<input type="password" id="pw" asp-for="Password" ><br><br>
+
+
+<input type="submit" name='Login'>
+
+<br><br>
+
+</form>
+@*
+<form method="GET" action="~/Home/Register">
+
+
+<button type="submit">Register</button>
+</form>
+*@
