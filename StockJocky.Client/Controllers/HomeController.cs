@@ -84,7 +84,7 @@ namespace StockJocky.Client.Controllers
         }
 
 
-        public IActionResult AddStock(UserViewModel userViewModel)
+        public async Task<IActionResult> AddStock(UserViewModel userViewModel)
         {
                 var user = _userRepo.LoginUser(userViewModel.UserName,userViewModel.Password);
 
@@ -94,9 +94,14 @@ namespace StockJocky.Client.Controllers
 
                         ApiHelper.InitializeClient();
 
-                        var s =  _stockFactory.LoadStock(userViewModel.SymbolAdd).GetAwaiter().GetResult();
+                        try
+                        {//catches a "stock symbol not found" error. ideally this will be handled in loadstock itself and just return null
+                        var s = await  _stockFactory.LoadStock(userViewModel.SymbolAdd);
 
                         _stockRepository.AddStock(user,s);
+                        }catch{
+
+                        }
 
                         
                        return AuthenticateUser(userViewModel);
@@ -105,7 +110,7 @@ namespace StockJocky.Client.Controllers
             return View("Index");
         }
 
-        public IActionResult RemoveStock(UserViewModel userViewModel)
+        public async Task<IActionResult> RemoveStock(UserViewModel userViewModel)
         {
 
             var user = _userRepo.LoginUser(userViewModel.UserName,userViewModel.Password);
@@ -114,7 +119,7 @@ namespace StockJocky.Client.Controllers
                     if(User!=null)
                     {
                         ApiHelper.InitializeClient();
-                        var s = _stockFactory.LoadStock(userViewModel.SymbolRemove).GetAwaiter().GetResult();
+                        var s = await _stockFactory.LoadStock(userViewModel.SymbolRemove);
                          _stockRepository.RemoveStock(user,s);
 
                        return AuthenticateUser(userViewModel);
