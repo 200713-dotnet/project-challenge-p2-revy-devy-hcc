@@ -1,0 +1,19 @@
+<h2>Login</h2>
+
+
+
+
+<label for="un" >Username</label>
+<input type="text" id="un" [formControl]='userName'  ><br><br>
+<label for="pw" >Password </label>
+<input type="password" id="pw" [formControl]='password' ><br><br>
+
+
+<p>
+    <button (click)="validate()">Login</button>
+</p>
+
+<p>
+    Value: {{userName.value}}
+</p>
+
