@@ -1,0 +1,41 @@
+<h2>{{userName}} Stocklist</h2>
+
+<table id="stocks" style="width: 100%; text-align: center;">
+    <tr>
+      <th>Company</th>
+      <th>Symbol</th>
+      <th>Price</th>
+      <th>Price Change</th>
+      <th>Percent Change</th>
+    </tr>
+  
+    
+  
+    <tr style="border-bottom: 1px solid #ddd;" *ngFor="let stock of stockList">
+      <td>{{stock.companyName}}</td>
+      <td>{{stock.symbol}}</td>
+      <td>${{stock.latestPrice}}</td>
+      <td>${{stock.change}}</td>
+      <td>{{stock.changePercent}}%</td>
+       <td>
+          <p>
+              <button (click)="removeStock(stock.symbol)"  style="color:red">X</button>
+          </p>
+      </td>
+    </tr>
+  
+    </table>
+
+
+    <br><br>
+<label for="addStock">Find Symbol</label>
+<input type="text" id="addStock" [formControl]='symbolAdd'>
+
+<button (click)="addStock()">Add Symbol</button>
+
+
+<br><br>
+
+
+
+<button (click)="logout()">Logout</button>

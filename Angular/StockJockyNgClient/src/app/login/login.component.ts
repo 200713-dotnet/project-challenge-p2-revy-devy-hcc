@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ValidateService } from '../validate.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   userName=new FormControl('');
   password=new FormControl('');
 
-  constructor(private validateService:ValidateService) {
+  constructor(private validateService:ValidateService,private router:Router) {
 
    }
 
@@ -25,6 +26,11 @@ export class LoginComponent implements OnInit {
     //send this.userName to a "validate" service, which will send it to a "validateFromWebAPI" service, which will send it to the webAPI service and wait for a response
     let success:boolean=this.validateService.validateCredentials(this.userName.value,this.password.value);
     this.userName.setValue("awaiting validation: "+success);
+    if(success)
+    {
+      this.router.navigateByUrl('/StockView');
+    }
+
   }
 
 }

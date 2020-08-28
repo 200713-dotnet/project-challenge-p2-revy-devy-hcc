@@ -6,10 +6,17 @@ import { ValidateFromWebAPIService } from './validate-from-web-api.service'
 })
 export class ValidateService {
 
+  usernmae:string;
+
   constructor(private validateFromWebAPIService:ValidateFromWebAPIService) { }
 
   validateCredentials(userName:string,password:string):boolean{
     //pass userName and password to ValidateWithWebAPI to get return value
-    return this.validateFromWebAPIService.validateCredentials(userName,password);
+    let success:boolean=this.validateFromWebAPIService.validateCredentials(userName,password);
+    if(success)
+    {
+      this.usernmae=userName;
+    }
+    return success; 
   }
 }
