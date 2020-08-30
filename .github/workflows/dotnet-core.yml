@@ -55,7 +55,7 @@ jobs:
     build_api:
       defaults:
         run:
-          working-directory: ApiService/
+          working-directory: ApiService/StockJockAPI
       runs-on: ubuntu-20.04
       steps:
         - uses: actions/checkout@v2.3.1
