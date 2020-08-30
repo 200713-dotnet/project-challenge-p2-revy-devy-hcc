@@ -21,7 +21,7 @@ jobs:
       defaults:
         run:
           working-directory: StockJock_Monolith/
-      needs: [build, test]
+      needs: [build_monolith, test_monolith]
       runs-on: ubuntu-20.04
       steps:
         - uses: actions/checkout@v2.3.1
