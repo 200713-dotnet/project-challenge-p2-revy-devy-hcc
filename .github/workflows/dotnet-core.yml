@@ -1,17 +1,23 @@
 jobs:
-    build:
+    build_monolith:
+      defaults:
+        working-directory: StockJock_Monolith/
       runs-on: ubuntu-20.04
       steps:
         - uses: actions/checkout@v2.3.1
         - run: dotnet build
     
-    test:
+    test_monolith:
+      defaults:
+        working-directory: StockJock_Monolith/
       runs-on: ubuntu-20.04
       steps:
         - uses: actions/checkout@v2.3.1
         - run: dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover
   
-    analyze:
+    analyze_monolith:
+      defaults:
+        working-directory: StockJock_Monolith/
       needs: [build, test]
       runs-on: ubuntu-20.04
       steps:
