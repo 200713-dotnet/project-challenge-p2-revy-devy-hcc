@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Stock } from './models';
-import { GetStockFromWebAPIService } from './get-stock-from-web-api.service'
+import { GetStockFromWebAPIService } from './get-stock-from-web-api.service';
 
 @Injectable({
   providedIn: 'root'

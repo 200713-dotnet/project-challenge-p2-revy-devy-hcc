@@ -10,7 +10,7 @@ export class GetStockFromWebAPIService {
   constructor() { }
 
   getAllStockFromUsername(username: string): Stock[] {
-    let list: Stock[] = [new Stock(), new Stock(), new Stock()]; // get list of symbols from username
+    const list: Stock[] = [new Stock(), new Stock(), new Stock()]; // get list of symbols from username
     for (let index = 0; index < list.length; index++) {
       const element = list[index];
       element.companyName = 'comp' + index;
