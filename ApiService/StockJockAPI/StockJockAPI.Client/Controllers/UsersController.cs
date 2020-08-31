@@ -78,7 +78,7 @@ namespace StockJockAPI.Controllers
         }
 
         [Route("{id}/add/{symbol}")]
-        [HttpPost]
+        //[HttpPost]
         public ActionResult AddStock(int id, string symbol)
         {
             var user = _userRepo.GetUserById(id); // var r = request.HttpParameters
