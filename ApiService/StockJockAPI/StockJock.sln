@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockJockAPI", "StockJockAPI\StockJockAPI.csproj", "{0739C7CA-39B6-47BC-ACDC-00D6B07098C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockJockAPI", "StockJockAPI.Client\StockJockAPI.csproj", "{0739C7CA-39B6-47BC-ACDC-00D6B07098C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockJockAPI.Testing", "StockJockAPI.Testing\StockJockAPI.Testing.csproj", "{7E799E4E-0705-4001-8544-F97D9CFD00FB}"
 EndProject
