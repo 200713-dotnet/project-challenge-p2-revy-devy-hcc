@@ -20,8 +20,10 @@ export class StockViewComponent implements OnInit {
   constructor(private getStockService: GetStockService, private modifyStockService: ModifyStockService, private validateService: ValidateService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userName = this.validateService.usernmae;
-    this.getStock();
+    this.userName = this.validateService.user.userName;
+    this.stockList=this.validateService.user.stockList;
+    //user already has all it's stock information, so we don't need to reget it here
+    //this.getStock();
   }
 
   removeStock(stockSymbol: string) {
@@ -36,7 +38,7 @@ export class StockViewComponent implements OnInit {
 
   getStock() {
     // pass username to getStockService, which will pass it to getStockFromWebAPI service.
-    this.stockList = this.getStockService.getAllStockFromUsername(this.userName);
+    //this.stockList = this.getStockService.getAllStockFromUsername(this.userName);
   }
 
   logout() {

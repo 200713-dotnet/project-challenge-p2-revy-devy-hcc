@@ -50,13 +50,17 @@ namespace StockJockAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors();
+            
 
             app.UseAuthorization();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

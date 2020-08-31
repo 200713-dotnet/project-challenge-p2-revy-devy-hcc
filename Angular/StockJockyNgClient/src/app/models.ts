@@ -5,3 +5,11 @@ export class Stock {
     change: number;
     changePercent: number;
 }
+
+export class User{
+    id:number;
+    userName: string;
+    password: string;
+    stockList: Stock[];
+    balance: number;
+}

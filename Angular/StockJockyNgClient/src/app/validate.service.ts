@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { ValidateFromWebAPIService } from './validate-from-web-api.service';
+import { Observable } from 'rxjs';
+import { User } from './models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidateService {
 
-  usernmae: string;
+  user:User;
 
   constructor(private validateFromWebAPIService: ValidateFromWebAPIService) { }
 
-  validateCredentials(userName: string, password: string): boolean {
+  validateCredentials(userName: string, password: string): Observable<any> {
     // pass userName and password to ValidateWithWebAPI to get return value
-    const success: boolean = this.validateFromWebAPIService.validateCredentials(userName, password);
-    if (success) {
-      this.usernmae = userName;
-    }
-    return success;
+    return this.validateFromWebAPIService.validateCredentials(userName, password);
+
+  }
+
+  storeUser(user:User){
+    this.user=user;
   }
 }
