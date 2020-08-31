@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aspnet-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aspnet-api
+  template:
+    metadata:
+      labels:
+        app: aspnet-api
+    spec:
+      containers:
+      - name: aspnet-api
+        image: hdhopson/stockjock_api
+        ports:
+          - containerPort: 80
+            name: aspnet-api-http   

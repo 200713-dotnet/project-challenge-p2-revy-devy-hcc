@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "StockJockyNgClient"
+    }
+  },
+  "defaultProject": "StockJockyNgClient",
+  "cli": {
+    "analytics": "43e1f132-c044-4067-ab34-72ec76793283"
+  }
 }

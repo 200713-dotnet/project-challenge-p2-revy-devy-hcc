@@ -7,12 +7,12 @@ export class ModifyStockFromWebAPIService {
 
   constructor() { }
 
-  addStock(username:string,symbol:string){
-    //add stock
+  addStock(username: string, symbol: string) {
+    // add stock
   }
 
-  removeStock(username:string,symbol:string){
-    //remove stock
+  removeStock(username: string, symbol: string) {
+    // remove stock
   }
 
 }
