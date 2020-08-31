@@ -5,11 +5,13 @@ using StockJockAPI.Domain.Factories;
 using StockJockAPI.Domain.Models;
 using StockJockAPI.Storing;
 using StockJockAPI.Storing.Repositories;
+using Microsoft.AspNetCore.Cors;
 
 namespace StockJockAPI.Controllers
 {
     [Route("api/users")]
     [ApiController]
+    [EnableCors()]
     public class UsersController: ControllerBase
     {
         public UsersController(DataBaseContext db)
