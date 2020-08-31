@@ -48,6 +48,13 @@
 </form>
 
 <br><br>
+<form method="GET" action="~/Home/UpdateStocks"> 
+
+@Html.HiddenFor(m => m.UserName)
+@Html.HiddenFor(m => m.Password)
+
+<button type="submit">Update</button>
+</form>
 <form method="GET" action="~/Home/Index">
 
 

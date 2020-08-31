@@ -5,6 +5,7 @@ using StockJockAPI.Domain.Factories;
 using StockJockAPI.Domain.Models;
 using StockJockAPI.Storing;
 using StockJockAPI.Storing.Repositories;
+using Microsoft.AspNetCore.Cors;
 
 namespace StockJockAPI.Controllers
 {
