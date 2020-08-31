@@ -65,6 +65,18 @@ namespace StockJocky.Domain.Factory
             }
         }
 
+        public async Task<User> UpdateAllStock(User user) //Update all Stocks
+        {
+            List<Stock> NewStockList = new List<Stock>();
+            foreach (var s in user.Stocks)
+            {
+                var newstock = await LoadStock(s.Symbol);
+                NewStockList.Add(newstock);
+            }
+            user.Stocks = NewStockList;
+            return user;
+        }
+
         public async Task<List<StockSymbol>> LoadSymbols() // Retrieves an array of all stock symbols from IEX api
         {
             string url = "https://cloud.iexapis.com/stable/ref-data/symbols?token=pk_47017819d55f4fa387ee42458b6a4dd5";
