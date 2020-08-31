@@ -73,7 +73,7 @@ jobs:
     analyze_api:
       defaults:
         run:
-          working-directory: ApiService/StockJockAPI/StockJockAPI.Testing
+          working-directory: ApiService/StockJockAPI/
       needs: [build_api, test_api]
       runs-on: ubuntu-20.04
       steps:
