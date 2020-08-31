@@ -7,7 +7,7 @@ export class ValidateFromWebAPIService {
 
   constructor() { }
 
-  validateCredentials(userName:string,password:string):boolean{
+  validateCredentials(userName: string, password: string): boolean {
     //pass userName and password to WebAPI and await a response
     return true;
   }

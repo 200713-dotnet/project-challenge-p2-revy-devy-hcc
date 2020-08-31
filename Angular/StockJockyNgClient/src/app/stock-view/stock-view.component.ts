@@ -13,33 +13,33 @@ import { Router } from '@angular/router';
 })
 export class StockViewComponent implements OnInit {
 
-  userName:string;
-  stockList:Stock[];
-  symbolAdd= new FormControl('');
+  userName: string;
+  stockList: Stock[];
+  symbolAdd = new FormControl('');
 
-  constructor(private getStockService:GetStockService,private modifyStockService:ModifyStockService,private validateService:ValidateService,private router:Router) { }
+  constructor(private getStockService: GetStockService, private modifyStockService: ModifyStockService, private validateService: ValidateService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userName=this.validateService.usernmae;
+    this.userName = this.validateService.usernmae;
     this.getStock();
   }
 
-  removeStock(stockSymbol:string){
-    this.modifyStockService.removeStock(this.userName,stockSymbol);
+  removeStock(stockSymbol: string) {
+    this.modifyStockService.removeStock(this.userName, stockSymbol);
     this.getStock();
   }
 
-  addStock(){
-    this.modifyStockService.addStock(this.userName,this.symbolAdd.value);
+  addStock() {
+    this.modifyStockService.addStock(this.userName, this.symbolAdd.value);
     this.getStock();
   }
 
-  getStock(){
+  getStock() {
     //pass username to getStockService, which will pass it to getStockFromWebAPI service.
-    this.stockList=this.getStockService.getAllStockFromUsername(this.userName);
+    this.stockList = this.getStockService.getAllStockFromUsername(this.userName);
   }
 
-  logout(){
+  logout() {
     this.router.navigateByUrl('');
   }
 

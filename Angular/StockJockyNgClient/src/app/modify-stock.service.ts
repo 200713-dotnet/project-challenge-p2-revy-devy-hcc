@@ -6,14 +6,14 @@ import { ModifyStockFromWebAPIService } from './modify-stock-from-web-api.servic
 })
 export class ModifyStockService {
 
-  constructor(private modifyStockFromWebAPIService:ModifyStockFromWebAPIService) { }
+  constructor(private modifyStockFromWebAPIService: ModifyStockFromWebAPIService) { }
 
-  addStock(username:string,symbol:string){
-    this.modifyStockFromWebAPIService.addStock(username,symbol);
+  addStock(username: string, symbol: string) {
+    this.modifyStockFromWebAPIService.addStock(username, symbol);
   }
 
-  removeStock(username:string,symbol:string){
-    this.modifyStockFromWebAPIService.removeStock(username,symbol);
+  removeStock(username: string, symbol: string) {
+    this.modifyStockFromWebAPIService.removeStock(username, symbol);
   }
 
 }
