@@ -107,6 +107,23 @@ jobs:
         - run: docker image push hdhopson/stockjock_api
         - run: docker logout
 
+    deploy_api:
+      defaults:
+        run:
+          working-directory: ApiService/StockJockAPI/
+      env:
+        AZURE_LOGIN: ${{ secrets.AZURE_LOGIN }}
+        AZURE_TOKEN: ${{ secrets.AZURE_TOKEN }}
+      needs: [package_api]
+      runs-on: ubuntu-20.04
+      steps:
+        - uses: actions/checkout@v2
+        - run: az login --service-principal ${AZURE_LOGIN} --password ${AZURE_TOKEN}
+        - run: az get-credentials --name haroldfridayaks --resource-group fridayaks --admin
+        - run: kubectl apply --filename ./kubernetes/ApiService
+        - run: kubectl rollout --restart --filename ./kubernetes/ApiService/k8s_deployment.yaml
+        - run: az logout    
+
         # End API Service 
 
     # build_angular:
