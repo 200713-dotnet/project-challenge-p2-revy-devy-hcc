@@ -49,10 +49,11 @@ namespace StockJockAPI.Controllers
             return NotFound();
         }
 
-        [HttpPost]
-        public ActionResult AuthenticateUser(User user)
+        [Route("{username}/{password}")]
+        //[HttpPost]
+        public ActionResult AuthenticateUser(string username, string password)
         {
-            var userFound = _userRepo.LoginUser(user.Username, user.Password);
+            var userFound = _userRepo.LoginUser(username, password);
 
             if(userFound != null)
             {
@@ -72,7 +73,7 @@ namespace StockJockAPI.Controllers
 
             }
 
-            return Ok(user);
+            return Ok(userFound);
         }
 
         [Route("{id}/add/{symbol}")]
