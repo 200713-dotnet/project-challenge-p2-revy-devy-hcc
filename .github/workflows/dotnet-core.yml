@@ -91,7 +91,7 @@ jobs:
     package_api:
       defaults:
         run:
-          working-directory: ApiService/StockJockAPI/StockJockAPI.Client
+          working-directory: ApiService/StockJockAPI/
       env:
         DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
