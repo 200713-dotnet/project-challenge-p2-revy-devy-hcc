@@ -118,7 +118,7 @@ jobs:
       runs-on: ubuntu-20.04
       steps:
         - uses: actions/checkout@v2
-        - run: az login --service-principal ${AZURE_LOGIN} --password ${AZURE_TOKEN}
+        - run: az login --service-principal --username ${AZURE_LOGIN} --password ${AZURE_TOKEN}
         - run: az get-credentials --name haroldfridayaks --resource-group fridayaks --admin
         - run: kubectl apply --filename ./kubernetes/ApiService
         - run: kubectl rollout --restart --filename ./kubernetes/ApiService/k8s_deployment.yaml
