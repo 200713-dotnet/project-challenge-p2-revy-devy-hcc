@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GetStockService } from '../get-stock.service';
-import { Stock } from '../models';
+import { Stock, User } from '../models';
 import { ModifyStockService } from '../modify-stock.service';
 import { ValidateService } from '../validate.service';
 import { Router } from '@angular/router';
@@ -14,32 +14,48 @@ import { Router } from '@angular/router';
 export class StockViewComponent implements OnInit {
 
   userName: string;
+  password: string;
+  id:string;
   stockList: Stock[];
   symbolAdd = new FormControl('');
+  user:User;
 
   constructor(private getStockService: GetStockService, private modifyStockService: ModifyStockService, private validateService: ValidateService, private router: Router) { }
 
   ngOnInit(): void {
     this.userName = this.validateService.user.userName;
     this.stockList=this.validateService.user.stockList;
+    this.id=this.validateService.user.id.toString();
+    this.password=this.validateService.user.password;
     //user already has all it's stock information, so we don't need to reget it here
     //this.getStock();
   }
 
   removeStock(stockSymbol: string) {
-    this.modifyStockService.removeStock(this.userName, stockSymbol);
+    this.modifyStockService.removeStock(this.id, stockSymbol);
     this.getStock();
   }
 
   addStock() {
-    this.modifyStockService.addStock(this.userName, this.symbolAdd.value);
+    this.modifyStockService.addStock(this.id, this.symbolAdd.value);
     this.getStock();
   }
 
   getStock() {
-    // pass username to getStockService, which will pass it to getStockFromWebAPI service.
-    //this.stockList = this.getStockService.getAllStockFromUsername(this.userName);
-  }
+
+    this.validateService.validateCredentials(this.userName, this.password).subscribe((data:any) => {this.user = {
+      id: data.id,
+      userName: data.username,
+      password: data.password,
+      stockList: data.stocks,
+      balance: data.balance
+    }
+    this.stockList=this.user.stockList;
+    console.log(this.stockList);
+  });
+
+}
+
 
   logout() {
     this.router.navigateByUrl('');

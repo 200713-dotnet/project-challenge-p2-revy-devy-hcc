@@ -89,11 +89,13 @@ namespace StockJockAPI.Domain.Factories
 		{
 			if (stocks != null) //List not empty
 			{
+                List<Stock> temp= new List<Stock>();
 				foreach (Stock s in stocks)
 				{
 					Stock NewStock = await LoadStock(s.Symbol); //Retrieve new information for each stock.
-                    s = NewStock; //Replace old stock information with new.
+                    temp.Add(NewStock); //Replace old stock information with new.
 				}
+                stocks= temp;
 			}
 		}
     }
