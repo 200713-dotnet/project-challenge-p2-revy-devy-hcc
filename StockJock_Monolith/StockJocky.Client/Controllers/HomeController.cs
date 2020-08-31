@@ -131,7 +131,9 @@ namespace StockJocky.Client.Controllers
 
         public async Task<IActionResult> UpdateStocks(UserViewModel userViewModel)
         {
-            //userViewModel.User.UpdateStocks();
+            var user = _userRepo.LoginUser(userViewModel.UserName,userViewModel.Password);
+            var updateduser = await _stockFactory.UpdateAllStock(user);
+            userViewModel.User = updateduser;
             return View("StockList", userViewModel);
         }
 
