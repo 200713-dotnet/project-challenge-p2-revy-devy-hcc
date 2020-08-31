@@ -2,9 +2,9 @@
 <CoverageSession>
   <Summary numSequencePoints="459" visitedSequencePoints="114" numBranchPoints="36" visitedBranchPoints="17" sequenceCoverage="24.83" branchCoverage="47.22" maxCyclomaticComplexity="81" minCyclomaticComplexity="81" visitedClasses="11" numClasses="21" visitedMethods="23" numMethods="59" />
   <Modules>
-    <Module hash="F8368DB2-8B7E-404E-A7C8-77BB4388C2AB">
+    <Module hash="AE3F2846-92BB-4E66-8FCE-A46FFF99C496">
       <ModulePath>StockJockAPI.dll</ModulePath>
-      <ModuleTime>2020-08-31T12:46:18</ModuleTime>
+      <ModuleTime>2020-08-31T01:07:31</ModuleTime>
       <ModuleName>StockJockAPI</ModuleName>
       <Files>
         <File uid="1" fullPath="/home/hop/revature/project-challenge-p2-revy-devy-hcc/ApiService/StockJockAPI/StockJockAPI.Client/Program.cs" />
