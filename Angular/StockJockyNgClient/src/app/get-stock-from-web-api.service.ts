@@ -23,7 +23,7 @@ export class GetStockFromWebAPIService {
     return list;
   }
 
-  getStockBySymbol(symbol: string): Stock{
+  getStockBySymbol(symbol: string): Stock {
     return new Stock();
   }
 }

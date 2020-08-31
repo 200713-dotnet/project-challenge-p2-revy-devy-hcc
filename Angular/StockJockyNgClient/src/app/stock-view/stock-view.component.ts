@@ -24,22 +24,22 @@ export class StockViewComponent implements OnInit {
     this.getStock();
   }
 
-  removeStock(stockSymbol: string): {
+  removeStock(stockSymbol: string) {
     this.modifyStockService.removeStock(this.userName, stockSymbol);
     this.getStock();
   }
 
-  addStock(): {
+  addStock() {
     this.modifyStockService.addStock(this.userName, this.symbolAdd.value);
     this.getStock();
   }
 
-  getStock(): {
+  getStock() {
     // pass username to getStockService, which will pass it to getStockFromWebAPI service.
     this.stockList = this.getStockService.getAllStockFromUsername(this.userName);
   }
 
-  logout(): {
+  logout() {
     this.router.navigateByUrl('');
   }
 
