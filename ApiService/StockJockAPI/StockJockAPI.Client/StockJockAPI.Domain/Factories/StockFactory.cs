@@ -84,5 +84,17 @@ namespace StockJockAPI.Domain.Factories
                 }
             }
         }
+
+        public async void UpdateStocks(List<Stock> stocks)
+		{
+			if (stocks != null) //List not empty
+			{
+				foreach (Stock s in stocks)
+				{
+					Stock NewStock = await LoadStock(s.Symbol); //Retrieve new information for each stock.
+                    s = NewStock; //Replace old stock information with new.
+				}
+			}
+		}
     }
 }

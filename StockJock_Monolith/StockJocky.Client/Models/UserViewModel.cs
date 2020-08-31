@@ -16,7 +16,7 @@ namespace StockJocky.Client.Models
 
        public UserViewModel()
        {
-           //User = new UserFactory().Create();
+           User = new UserFactory().Create();
        }
     }
 }
