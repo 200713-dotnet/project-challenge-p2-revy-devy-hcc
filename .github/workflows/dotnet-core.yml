@@ -55,7 +55,7 @@ jobs:
     deploy_monolith:
       defaults:
         run:
-          working-directory: ApiService/StockJockAPI/
+          working-directory: StockJock_Monolith/
       env:
         AZURE_LOGIN: ${{ secrets.AZURE_LOGIN }}
         AZURE_TOKEN: ${{ secrets.AZURE_TOKEN }}
@@ -66,8 +66,8 @@ jobs:
         - uses: actions/checkout@v2
         - run: az login --service-principal --username ${AZURE_LOGIN} --password ${AZURE_TOKEN} --tenant ${AZURE_TENANT}
         - run: az aks get-credentials --name haroldfridayaks --resource-group fridayaks --admin
-        - run: kubectl apply --filename ../../.kubernetes/ApiService/
-        - run: kubectl rollout restart --filename ../../.kubernetes/ApiService/k8s_deployment.yaml
+        - run: kubectl apply --filename ../../.kubernetes/ASPNET_MVC/
+        - run: kubectl rollout restart --filename ../../.kubernetes/ASPNET_MVC/k8s_deployment.yaml
         - run: az logout
 
         # End Monolith 
