@@ -121,7 +121,7 @@ jobs:
         - uses: actions/checkout@v2
         - run: az login --service-principal --username ${AZURE_LOGIN} --password ${AZURE_TOKEN} --tenant ${AZURE_TENANT}
         - run: az aks get-credentials --name haroldfridayaks --resource-group fridayaks --admin
-        - run: kubectl apply --filename ./kubernetes/ApiService
+        - run: kubectl apply --filename /.kubernetes/ApiService
         - run: kubectl rollout --restart --filename ./kubernetes/ApiService/k8s_deployment.yaml
         - run: az logout    
 
