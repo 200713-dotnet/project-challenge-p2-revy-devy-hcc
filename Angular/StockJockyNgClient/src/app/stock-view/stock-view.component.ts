@@ -15,49 +15,51 @@ export class StockViewComponent implements OnInit {
 
   userName: string;
   password: string;
-  id:string;
+  id: string;
   stockList: Stock[];
   symbolAdd = new FormControl('');
-  user:User;
+  user: User;
 
-  constructor(private getStockService: GetStockService, private modifyStockService: ModifyStockService, private validateService: ValidateService, private router: Router) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private getStockService: GetStockService, private modifyStockService: ModifyStockService, private validateService: ValidateService, private router: Router) {}
 
   ngOnInit(): void {
     this.userName = this.validateService.user.userName;
-    this.stockList=this.validateService.user.stockList;
-    this.id=this.validateService.user.id.toString();
-    this.password=this.validateService.user.password;
-    //user already has all it's stock information, so we don't need to reget it here
-    //this.getStock();
+    this.stockList = this.validateService.user.stockList;
+    this.id = this.validateService.user.id.toString();
+    this.password = this.validateService.user.password;
+    // user already has all it's stock information, so we don't need to reget it here
+    // this.getStock();
   }
 
-  removeStock(stockSymbol: string) {
+  removeStock(stockSymbol: string): void {
     this.modifyStockService.removeStock(this.id, stockSymbol);
     this.getStock();
   }
 
-  addStock() {
+  addStock(): void {
     this.modifyStockService.addStock(this.id, this.symbolAdd.value);
     this.getStock();
   }
 
-  getStock() {
+  getStock(): void {
 
-    this.validateService.validateCredentials(this.userName, this.password).subscribe((data:any) => {this.user = {
-      id: data.id,
-      userName: data.username,
-      password: data.password,
-      stockList: data.stocks,
-      balance: data.balance
-    }
-    this.stockList=this.user.stockList;
-    console.log(this.stockList);
-  });
+    this.validateService.validateCredentials(this.userName, this.password).subscribe((data: any) => {
+      this.user = {
+        id: data.id,
+        userName: data.username,
+        password: data.password,
+        stockList: data.stocks,
+        balance: data.balance
+      };
+      this.stockList = this.user.stockList;
+      console.log(this.stockList);
+    });
 
-}
+  }
 
 
-  logout() {
+  logout(): void {
     this.router.navigateByUrl('');
   }
 

@@ -6,8 +6,8 @@ export class Stock {
     changePercent: number;
 }
 
-export class User{
-    id:number;
+export class User {
+    id: number;
     userName: string;
     password: string;
     stockList: Stock[];

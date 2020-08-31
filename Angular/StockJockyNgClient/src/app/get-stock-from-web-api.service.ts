@@ -10,20 +10,22 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class GetStockFromWebAPIService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getAllStockFromUsername(username: string): Observable<any> {
 
 
-    //get the list of stock symbols associated with the user, then getStockBySymbol for each and add the response to the list. return the list when it's finished iterating
-    let list: Stock[];
-   return this.httpClient.get(`https://localhost:5001/api/user/...`);
+    // get the list of stock symbols associated with the user,
+    // then getStockBySymbol for each and add the response to the list.
+    // return the list when it's finished iterating
+    // let list: Stock[];
+    return this.httpClient.get(`https://localhost:5001/api/user/...`);
 
-   // for (let index = 0; index < array.length; index++) {
-   //   const element = array[index];
-      
+    // for (let index = 0; index < array.length; index++) {
+    //   const element = array[index];
+
     //  list.push(arry[index]);
-   // }
+    // }
 
     /*
     const list: Stock[] = [new Stock(), new Stock(), new Stock()]; // get list of symbols from username
@@ -37,11 +39,11 @@ export class GetStockFromWebAPIService {
       list[index] = element;
     }
     */
-   // return list;
+    // return list;
   }
 
   getStockBySymbol(symbol: string): Observable<any> {
     return this.httpClient.get(`https://localhost:5001/api/iex/${symbol}`);
-    //return new Stock();
+    // return new Stock();
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry,map } from 'rxjs/operators';
+import { catchError, retry, map } from 'rxjs/operators';
 import { User } from './models';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { User } from './models';
 })
 export class ValidateFromWebAPIService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   validateCredentials(userName: string, password: string): Observable<any> {
 

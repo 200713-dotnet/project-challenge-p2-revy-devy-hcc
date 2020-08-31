@@ -8,7 +8,7 @@ import { User } from './models';
 })
 export class ValidateService {
 
-  user:User;
+  user: User;
 
   constructor(private validateFromWebAPIService: ValidateFromWebAPIService) { }
 
@@ -18,7 +18,7 @@ export class ValidateService {
 
   }
 
-  storeUser(user:User){
-    this.user=user;
+  storeUser(user: User): void {
+    this.user = user;
   }
 }

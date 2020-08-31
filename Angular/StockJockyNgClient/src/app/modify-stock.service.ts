@@ -8,11 +8,11 @@ export class ModifyStockService {
 
   constructor(private modifyStockFromWebAPIService: ModifyStockFromWebAPIService) { }
 
-  addStock(id: string, symbol: string) {
+  addStock(id: string, symbol: string): void {
     this.modifyStockFromWebAPIService.addStock(id, symbol);
   }
 
-  removeStock(id: string, symbol: string) {
+  removeStock(id: string, symbol: string): void {
     this.modifyStockFromWebAPIService.removeStock(id, symbol);
   }
 

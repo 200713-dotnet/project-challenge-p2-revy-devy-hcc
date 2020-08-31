@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: angular
+spec:
+  ports:
+    - name: angular
+      port: 4200
+      targetPort: angluar-http
+  selector:
+    app: angular
+  type: LoadBalancer

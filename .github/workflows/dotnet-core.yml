@@ -127,16 +127,16 @@ jobs:
 
         # End API Service 
 
-    # build_angular:
-    #   defaults:
-    #     run:
-    #       working-directory: Angular/StockJockyNgClient/
-    #   runs-on: ubuntu-20.04
-    #   steps:
-    #     - uses: actions/checkout@v2
-    #     - run: npm ci
-    #     - run: npm run build
-    #     - run: npm run lint
+    build_angular:
+      defaults:
+        run:
+          working-directory: Angular/StockJockyNgClient/
+      runs-on: ubuntu-20.04
+      steps:
+        - uses: actions/checkout@v2
+        - run: npm ci
+        - run: npm run build
+        - run: npm run lint
   
 name: cibuild
   

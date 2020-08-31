@@ -15,10 +15,10 @@ export class LoginComponent implements OnInit {
 
   userName = new FormControl('');
   password = new FormControl('');
-  user$:Observable<string>;
-  user:User;
-  testOut:string;
-  test$ ={
+  user$: Observable<string>;
+  user: User;
+  testOut: string;
+  test$ = {
     next: x => console.log('Observer got a next value: ' + x),
     error: err => console.error('Observer got an error: ' + err),
     complete: () => console.log('Observer got a complete notification'),
@@ -31,31 +31,31 @@ export class LoginComponent implements OnInit {
 
   }
 
-  validate() {
-    
-    //this.validateService.validateCredentials(this.userName.value, this.password.value).subscribe(this.test$);
-   //this.user$=this.validateService.validateCredentials(this.userName.value, this.password.value);
-   this.validateService.validateCredentials(this.userName.value, this.password.value).subscribe((data:any) => {this.user = {
-     id: data.id,
-     userName: data.username,
-     password: data.password,
-     stockList: data.stocks,
-     balance: data.balance
-   }
-    //if response returns OK, store user in validate service and rerout to stockview
-   if(this.user.userName==this.userName.value)
-   {
-    this.validateService.storeUser(this.user);
-    this.router.navigateByUrl('/StockView');
-   }
-  }
-   );
+  validate(): void {
 
-   
-  
-    
+    // this.validateService.validateCredentials(this.userName.value, this.password.value).subscribe(this.test$);
+    // this.user$=this.validateService.validateCredentials(this.userName.value, this.password.value);
+    this.validateService.validateCredentials(this.userName.value, this.password.value).subscribe((data: any) => {
+      this.user = {
+        id: data.id,
+        userName: data.username,
+        password: data.password,
+        stockList: data.stocks,
+        balance: data.balance
+      };
+      // if response returns OK, store user in validate service and rerout to stockview
+      if (this.user.userName === this.userName.value) {
+        this.validateService.storeUser(this.user);
+        this.router.navigateByUrl('/StockView');
+      }
+    }
+    );
 
-    
+
+
+
+
+
 
   }
 
