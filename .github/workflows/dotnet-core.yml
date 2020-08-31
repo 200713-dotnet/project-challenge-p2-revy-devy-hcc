@@ -51,11 +51,13 @@ jobs:
         - run: docker image tag stockjock_monolith hdhopson/stockjock_monolith
         - run: docker image push hdhopson/stockjock_monolith
         - run: docker logout
+
+        # End Monolith 
     
     build_api:
       defaults:
         run:
-          working-directory: ApiService/StockJockAPI/StockJockAPI.Client
+          working-directory: ApiService/StockJockAPI/
       runs-on: ubuntu-20.04
       steps:
         - uses: actions/checkout@v2.3.1
@@ -104,6 +106,20 @@ jobs:
         - run: docker image tag stockjock_api hdhopson/stockjock_api
         - run: docker image push hdhopson/stockjock_api
         - run: docker logout
+
+        # End API Service 
+
+    jobs:
+      build_angular:
+        defaults:
+          run:
+            working-directory: Angular/StockJockyNgClient/
+        runs-on: ubuntu-20.04
+        steps:
+          - uses: actions/checkout@v2
+          - run: npm ci
+          - run: npm run build
+          - run: npm run lint
   
     # deploy:
   
