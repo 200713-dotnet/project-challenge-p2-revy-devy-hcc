@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: aspnet-mvc
-        image: hdhopson/stockjock_mvc
+        image: hdhopson/stockjock_monolith
         ports:
           - containerPort: 80
             name: aspnet-mvc-http   
