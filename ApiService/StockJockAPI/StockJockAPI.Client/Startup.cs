@@ -35,6 +35,11 @@ namespace StockJockAPI
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer
               (Configuration.GetConnectionString("mssql"))  
             );
+
+            services.AddCors(options =>
+            options.AddDefaultPolicy(
+                poli => poli.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +53,8 @@ namespace StockJockAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
