@@ -114,7 +114,7 @@ jobs:
       env:
         AZURE_LOGIN: ${{ secrets.AZURE_LOGIN }}
         AZURE_TOKEN: ${{ secrets.AZURE_TOKEN }}
-        AZURE_TOKEN: ${{ secrets.AZURE_TENANT }}
+        AZURE_TENANT: ${{ secrets.AZURE_TENANT }}
       needs: [package_api]
       runs-on: ubuntu-20.04
       steps:
