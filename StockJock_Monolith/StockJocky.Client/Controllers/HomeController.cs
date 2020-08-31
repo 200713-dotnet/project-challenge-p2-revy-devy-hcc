@@ -48,24 +48,25 @@ namespace StockJocky.Client.Controllers
             if (ModelState.IsValid)
             {
                     //get user if exists, otherwise add a new user
-                userViewModel.User = _userRepo.LoginUser(userViewModel.UserName,userViewModel.Password);
+                var user = _userRepo.LoginUser(userViewModel.UserName,userViewModel.Password);
 
                             //check to make sure a user was returned from _userRepo.LoginUser
-                    if(userViewModel.User!=null)
+                    if(user != null)
                     {
 
                             //create a tempstocklist to hold information while the original stocklist is iterated over
                         var tempStockList= new List<Stock>();
 
                                 //iterate over the stocklist to get the most recent stock info, putting the new info in tempStockList
-                                ApiHelper.InitializeClient();
-                        foreach (var stock in userViewModel.User.Stocks)
+                        ApiHelper.InitializeClient();
+                        foreach (var stock in user.Stocks)
                         {
-                            var s= _stockFactory.LoadStock(stock.Symbol).GetAwaiter().GetResult();
+                            var s = _stockFactory.LoadStock(stock.Symbol).GetAwaiter().GetResult();
                             tempStockList.Add(s);
                         } 
-
-                        userViewModel.User.Stocks=tempStockList;
+                        user.Stocks = tempStockList;
+                        userViewModel.User = user;
+                        
 
                     }else{
                         return View("Index",userViewModel);
@@ -125,6 +126,14 @@ namespace StockJocky.Client.Controllers
                        return AuthenticateUser(userViewModel);
                     }
 
+            return View("StockList", userViewModel);
+        }
+
+        public async Task<IActionResult> UpdateStocks(UserViewModel userViewModel)
+        {
+            var user = _userRepo.LoginUser(userViewModel.UserName,userViewModel.Password);
+            var updateduser = await _stockFactory.UpdateAllStock(user);
+            userViewModel.User = updateduser;
             return View("StockList", userViewModel);
         }
 

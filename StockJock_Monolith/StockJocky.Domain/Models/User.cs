@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using StockJocky.Domain.Factory;
 
 namespace StockJocky.Domain.Models
 {
