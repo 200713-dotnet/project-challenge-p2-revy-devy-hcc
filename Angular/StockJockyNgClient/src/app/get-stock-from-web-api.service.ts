@@ -19,7 +19,7 @@ export class GetStockFromWebAPIService {
     // then getStockBySymbol for each and add the response to the list.
     // return the list when it's finished iterating
     // let list: Stock[];
-    return this.httpClient.get(`https://localhost:5001/api/user/...`);
+    return this.httpClient.get(`http://52.155.33.35/api/user/...`);
 
     // for (let index = 0; index < array.length; index++) {
     //   const element = array[index];
@@ -43,7 +43,7 @@ export class GetStockFromWebAPIService {
   }
 
   getStockBySymbol(symbol: string): Observable<any> {
-    return this.httpClient.get(`https://localhost:5001/api/iex/${symbol}`);
+    return this.httpClient.get(`http://52.155.33.35/api/iex/${symbol}`);
     // return new Stock();
   }
 }

@@ -11,12 +11,12 @@ export class ModifyStockFromWebAPIService {
   constructor(private httpClient: HttpClient) { }
 
   addStock(id: string, symbol: string): void {
-    this.httpClient.get(`https://localhost:5001/api/users/${id}/add/${symbol}`);
+    this.httpClient.get(`http://52.155.33.35/api/users/${id}/add/${symbol}`);
     // add stock
   }
 
   removeStock(id: string, symbol: string): void {
-    this.httpClient.delete(`https://localhost:5001/api/users/${id}/remove/${symbol}`);
+    this.httpClient.delete(`http://52.155.33.35/api/users/${id}/remove/${symbol}`);
     // remove stock
   }
 

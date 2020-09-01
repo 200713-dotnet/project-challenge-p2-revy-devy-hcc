@@ -13,6 +13,6 @@ export class ValidateFromWebAPIService {
 
   validateCredentials(userName: string, password: string): Observable<any> {
 
-    return this.httpClient.get<any>(`https://localhost:5001/api/users/${userName}/${password}`);
+    return this.httpClient.get<any>(`http://52.155.33.35/api/users/${userName}/${password}`);
   }
 }
