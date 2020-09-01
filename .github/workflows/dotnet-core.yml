@@ -156,7 +156,7 @@ jobs:
         - run: npm run build
         - run: npm run lint
 
-    pack_angular:
+    package_angular:
       defaults:
         run:
           working-directory: Angular/StockJockyNgClient/
@@ -173,7 +173,7 @@ jobs:
         - run: docker image push hdhopson/stockjock_angular
         - run: docker logout
 
-    deploy_api:
+    deploy_angular:
       defaults:
         run:
           working-directory: Angular/StockJockyNgClient/
@@ -187,8 +187,8 @@ jobs:
         - uses: actions/checkout@v2
         - run: az login --service-principal --username ${AZURE_LOGIN} --password ${AZURE_TOKEN} --tenant ${AZURE_TENANT}
         - run: az aks get-credentials --name haroldfridayaks --resource-group fridayaks --admin
-        - run: kubectl apply --filename ../../.kubernetes/ApiService/
-        - run: kubectl rollout restart --filename ../../.kubernetes/ApiService/k8s_deployment.yaml
+        - run: kubectl apply --filename ../../.kubernetes/Angular/
+        - run: kubectl rollout restart --filename ../../.kubernetes/Angular/k8s_deployment.yaml
         - run: az logout
   
 name: cibuild
