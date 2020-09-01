@@ -155,6 +155,23 @@ jobs:
         - run: npm ci
         - run: npm run build
         - run: npm run lint
+
+    pack_angular:
+      defaults:
+        run:
+          working-directory: Angular/StockJockyNgClient/
+      env:
+        DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
+        DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      needs: build_angular
+      runs-on: ubuntu-20.04
+      steps:
+        - uses: actions/checkout@v2
+        - run: echo ${DOCKER_TOKEN} | docker login --username ${DOCKER_LOGIN} --password ${DOCKER_TOKEN}
+        - run: docker image build -t angular .
+        - run: docker image tag angular hdhopson/stockjock_angular
+        - run: docker image push hdhopson/stockjock_angular
+        - run: docker logout
   
 name: cibuild
   
